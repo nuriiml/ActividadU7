@@ -1,0 +1,36 @@
+<div class = "container">
+    <h1 class="text-center">INTRODUZCA LOS DATOS</h1>
+    <p class="text-center">Para poder inicial la matrícula en nuestra autoescuela:</p>
+    
+    <form class="row" [formGroup]="autoescuelaForm">
+      <div class="col-6 mb-3">
+        <label class="form-label">Nombre</label>
+        <input formControlName="name" type="text" class="form-control" placeholder="Name">
+      </div>
+      <div class="col-6 mb-3">
+        <label class="form-label">Primer Apellido</label>
+        <input formControlName="firstName" type="text" class="form-control" placeholder="First name">
+      </div>
+      <div class="col-6 mb-3">
+        <label class="form-label">DNI</label>
+        <input formControlName="dni" type="text" class="form-control" placeholder="DNI">
+      </div>
+      <div class="col-6 mb-3">
+        <label class="form-label">Email</label>
+        <input formControlName="email" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Email">
+      </div>
+   
+      <button (click)="sendData()" type="submit" class="btn btn-primary">Añadir</button>
+    </form>
+  
+    <div *ngIf="isError" class="alert alert-danger pb-3" role="alert">
+      Ha pasado algo!!
+    </div>
+   
+    <ul class="list-group">
+      <li *ngFor="let alumno of arrAutoescuela" class="list-group-item">#{{alumno.id}} - {{alumno.name}} - {{alumno.email}} 
+        <button type="button" (click)="deleteAlumno(alumno.id)" class="btn btn-danger">Eliminar</button>
+     </li>
+    </ul>
+  
+  </div>
